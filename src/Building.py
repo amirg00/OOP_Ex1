@@ -23,3 +23,6 @@ class Building:
                                                    value["_openTime"], value["_startTime"], value["_stopTime"]))
         except IOError as e:
             print (e)
+
+    def number_of_floors(self):
+        return self.maxFloor - self.minFloor

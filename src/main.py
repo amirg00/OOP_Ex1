@@ -12,7 +12,9 @@ def main():
     args = parser.parse_args()
     building = Building(args.building)
     calls = Calls(args.calls)
-    #print (calls.calls)
+    calls.update_output(args.output)
+
+    # print (calls.calls)
 
 
 if __name__ == "__main__":

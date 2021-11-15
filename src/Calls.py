@@ -13,3 +13,8 @@ class Calls:
             for row in csv_reader:
                 calls.append(row)
         self.calls = calls
+
+    def update_output(self, csv_file):
+        with open(csv_file, "w") as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerows(self.calls)
