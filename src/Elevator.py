@@ -22,4 +22,4 @@ class Elevator:
         return int(math.ceil(self.stop_time + self.start_time + self.close_time + self.open_time))
 
     def get_time_for_call(self, src, dest):
-        return int(math.ceil(self.stop_time + self.start_time + self.close_time + self.open_time + abs(dest-src)/self.speed))
+        return math.ceil(self.stop_time + self.start_time + self.close_time + self.open_time + (abs(dest - src) / self.speed))

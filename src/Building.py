@@ -25,7 +25,7 @@ class Building:
                 elev = dictionary["_elevators"]
                 for value in elev:
                     self.elevators.append(Elevator(value["_id"], value["_speed"], value["_minFloor"],
-                                                   value["_maxFloor"], ["_closeTime"],
+                                                   value["_maxFloor"], value["_closeTime"],
                                                    value["_openTime"], value["_startTime"], value["_stopTime"]))
         except IOError as e:
             print (e)
