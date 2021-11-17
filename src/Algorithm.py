@@ -46,11 +46,19 @@ class Algorithm:
                         self.merge_calls(elev, s1, d1, s2, d2, call)
                     else:
                         self.add_to_end(elev, call, d1)
-                else:
+                elif t1 > t2:
+                    self.add_to_end(elev, call, d1)
+                elif t1 == t2:
                     if Calls.check_call_state(s1, d1) != Calls.check_call_state(s2, d2):
                         self.add_to_end(elev, call, d1)
                     else:
+                        print(t1)
+                        print (t2)
                         self.equal_time_stamp(elev, s1, d1, s2, d2, call)
+                else:
+                    self.add_to_end(elev, call, d1)
+            print (elev.time_stamps_copy)
+            print (elev.copy_calls)
 
     def insert_first(self, elev, call):
         elev.time_stamps_copy.append(call[1])
@@ -97,12 +105,21 @@ class Algorithm:
             self.add_to_end(elev, call, d1)
 
     def add_to_end(self, elev, call, d1):
-        elev.time_stamps_copy.append(call[1])
-        time = call[1] + elev.get_time_for_call(d1, call[2]) \
-               + elev.get_time_for_call(call[2], call[3])
-        elev.time_stamps_copy.append(time)
-        elev.copy_calls.append(call[2])
-        elev.copy_calls.append(call[3])
+
+        if call[1] > elev.time_stamps_copy[len(elev.time_stamps_copy) - 1]:
+            elev.time_stamps_copy.append(call[1])
+            time = call[1] + elev.get_time_for_call(d1, call[2]) \
+                   + elev.get_time_for_call(call[2], call[3])
+            elev.time_stamps_copy.append(time)
+            elev.copy_calls.append(call[2])
+            elev.copy_calls.append(call[3])
+        else:
+            time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] + elev.get_time_for_call(d1, call[2])
+            elev.time_stamps_copy.append(time)
+            time = time + elev.get_time_for_call(call[2], call[3])
+            elev.time_stamps_copy.append(time)
+            elev.copy_calls.append(call[2])
+            elev.copy_calls.append(call[3])
 
     def equal_time_stamp(self, elev, s1, d1, s2, d2, call):
         sorted_list = [s1]
@@ -137,25 +154,22 @@ class Algorithm:
     def min_time_with_call(self):
         min_elev = self.elevators[0]
         min_time = self.elevators[0].time_stamps_copy[len(self.elevators[0].time_stamps_copy) - 1]
-        init_time = self.elevators[0].time_stamps_copy[0]
+        init_time = self.elevators[0].time_stamps_copy[len(self.elevators[0].time_stamps_copy) - 2]
         diff_first = min_time - init_time
-        print("min_time:")
-        print (min_time)
+
         for elev in self.elevators:
-            print(elev.time_stamps_copy)
-            print(elev.copy_calls)
+
             curr_time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1]
-            first_time = elev.time_stamps_copy[0]
-            diff = curr_time-first_time
-            print (curr_time)
-            if curr_time < min_time or diff < diff_first:
+            first_time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 2]
+            diff = curr_time - first_time
+
+            if curr_time < min_time:
                 min_elev = elev
                 min_time = curr_time
                 diff_first = diff
-
         self.original_calls[self.call_index][5] = min_elev.id
         min_elev.time_stamps = deepcopy(min_elev.time_stamps_copy)
-        min_elev.copy_calls = deepcopy(min_elev.copy_calls)
+        min_elev.associated_calls = deepcopy(min_elev.copy_calls)
 
         # reset of all time stamps lists and calls copies for next call:
         for elev in self.elevators:
