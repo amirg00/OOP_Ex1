@@ -1,5 +1,5 @@
 import argparse
-
+import math
 from Building import Building
 from Calls import Calls
 
@@ -12,8 +12,8 @@ def main():
     args = parser.parse_args()
     building = Building(args.building)
     calls = Calls(args.calls)
-    calls.update_output(args.output)
 
+    calls.update_output(args.output)
     # print (calls.calls)
 
 
