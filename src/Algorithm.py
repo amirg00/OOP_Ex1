@@ -102,7 +102,7 @@ class Algorithm:
             time = time + elev.get_time_for_call(d2, d1)
             elev.time_stamps_copy.append(time)
         else:
-            elev.copy_calls.remove(len(elev.copy_calls) - 1)
+            elev.copy_calls.pop(len(elev.copy_calls) - 1)
             elev.copy_calls.append(d1)
             elev.time_stamps_copy.append(d1_time_stamp)
             self.add_to_end(elev, call, d1)
@@ -129,9 +129,9 @@ class Algorithm:
         bisect.insort(sorted_list, d1)
         bisect.insort(sorted_list, s2)
         bisect.insort(sorted_list, d2)
-        elev.copy_calls.remove(len(elev.copy_calls) - 1)
-        elev.copy_calls.remove(len(elev.copy_calls) - 2)
-        elev.time_stamps_copy.remove(len(elev.time_stamps_copy) - 1)
+        elev.copy_calls.pop(len(elev.copy_calls) - 1)
+        elev.copy_calls.pop(len(elev.copy_calls) - 2)
+        elev.time_stamps_copy.pop(len(elev.time_stamps_copy) - 1)
 
         if len(sorted_list) == 4:
             elev.copy_calls = elev.copy_calls + sorted_list
