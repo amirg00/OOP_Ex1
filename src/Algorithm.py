@@ -54,7 +54,8 @@ class Algorithm:
                     else:
                         print(t1)
                         print (t2)
-                        self.equal_time_stamp(elev, s1, d1, s2, d2, call)
+                        # self.equal_time_stamp(elev, s1, d1, s2, d2, call)
+                        self.add_to_end(elev, call, d1)
                 else:
                     self.add_to_end(elev, call, d1)
             print (elev.time_stamps_copy)
@@ -69,8 +70,10 @@ class Algorithm:
 
     def merge_calls(self, elev, s1, d1, s2, d2, call):
         # (2 -> 8) + (4 -> 8) = (2 -> 4) + (4 -> 8)
+        print ("dddsddddd")
+        print (elev.copy_calls)
+        print ("sssssssss")
         d1_time_stamp = elev.time_stamps_copy.pop(len(elev.time_stamps_copy) - 1)
-        elev.copy_calls.remove(len(elev.copy_calls) - 1)
         elev.copy_calls.append(s2)
         time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] + elev.get_time_for_call(s1, s2)
         elev.time_stamps_copy.append(time)
