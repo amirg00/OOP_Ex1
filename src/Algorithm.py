@@ -13,7 +13,6 @@ class States(Enum):
 
 
 class Algorithm:
-
     def __init__(self, calls, elevators, original_calls):
         self.calls = calls
         self.elevators = elevators
