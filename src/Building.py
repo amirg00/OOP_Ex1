@@ -18,7 +18,6 @@ class Building:
              ----------
              file_name : str
                 the name of the file
-
             Returns
             -------
             None
@@ -40,7 +39,6 @@ class Building:
             ----------
             file_name : str
                 the name of the file
-
             Returns
             -------
             None
