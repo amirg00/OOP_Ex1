@@ -8,7 +8,7 @@ from Building import Building
 from Calls import Calls
 from Algorithm import Algorithm
 
-LONG_DESCRIPTION = r"""Exercise 1 - OOP
+DESCRIPTION = """Exercise 1 - OOP
 
 This main manages everything including the following:
 
