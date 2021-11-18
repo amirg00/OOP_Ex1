@@ -26,18 +26,14 @@ def main():
     parser.add_argument('building', help='building json file')
     parser.add_argument('calls', help=' calls csv file')
     parser.add_argument('output', help='scheduled calls csv file')
-
     args = parser.parse_args()
     building = Building(args.building)
     calls = Calls(args.calls)
-
     algo = Algorithm(calls.copy_of_round_calls, building.elevators, calls.calls)
     algo.to_main()
     calls.allocated_calls(algo.original_calls)
-    # algo.print_calls()
     calls.print_round_calls()
     calls.update_output(args.output)
-    print (calls.calls)
 
 
 if __name__ == "__main__":
