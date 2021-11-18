@@ -40,7 +40,3 @@ def main():
     algo.algo_main()
     calls.allocated_calls(algo.original_calls)
     calls.update_output(args.output)
-
-
-if __name__ == "__main__":
-    main()

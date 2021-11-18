@@ -20,7 +20,7 @@ class States(Enum):
 class Algorithm:
     def __init__(self, calls, elevators, original_calls):
         """
-            The constructor gets the calls and the original calls with the original time stamps,
+            The constructor gets the calls, the original calls with the original time stamps,
             and the elevators.
 
             Parameters
@@ -134,7 +134,15 @@ class Algorithm:
             Here the function considers the case in which the elevator suffices
             reaching the current call, before reaching its destination.
 
+            Additionally, four sub-cases are considered:
+                1.
+                2.
+                3.
 
+            Regarding to the other sub-cases, we would have to add the call to the end of elevator's lists,
+            because Boaz's cmd doesn't allow to merge up call with down calls, when the elevator
+            first fulfills one direction calls and once she done with those calls, she is allowed
+            switching a direction.
 
             Parameters
             ----------
@@ -195,7 +203,7 @@ class Algorithm:
             the elevator fulfills.
 
             Therefore, it checks the following:
-                1. if
+                1. if the call time
 
             Parameters
             ----------
