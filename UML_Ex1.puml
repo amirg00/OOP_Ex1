@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+Algorithm --> Algorithm
+
+class Algorithm{
+-fdffd
++fdfdf
++dfdfd()
+}
+
+
+@enduml
