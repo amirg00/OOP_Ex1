@@ -30,7 +30,7 @@ def main():
     building = Building(args.building)
     calls = Calls(args.calls)
     algo = Algorithm(calls.copy_of_round_calls, building.elevators, calls.calls)
-    algo.to_main()
+    algo.algo_main()
     calls.allocated_calls(algo.original_calls)
     calls.print_round_calls()
     calls.update_output(args.output)

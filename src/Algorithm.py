@@ -19,7 +19,7 @@ class Algorithm:
         self.original_calls = original_calls
         self.call_index = 0
 
-    def to_main(self):
+    def algo_main(self):
         for call in self.calls:
             self.calculate_update_time(self.elevators, call)
             self.min_time_with_call()
