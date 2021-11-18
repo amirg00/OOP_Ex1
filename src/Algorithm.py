@@ -59,8 +59,12 @@ class Algorithm:
 
     def calculate_update_time(self, elevators, call):
         """
-            The constructor gets the calls and the original calls with the original time stamps,
-            and the elevators.
+            the function goes over the elevators, and for each checks first, whether
+            the elevator has already calls or not. If so, then it inserts first,
+            otherwise it means that the elevator has already calls. If it has calls
+            then we shall check if the elevator would succeed fulfilling the call before
+            going to destination. If so, the method merges the calls, otherwise it adds
+            the call to the end of the elevator's copy lists.
 
             Parameters
             ----------
@@ -187,7 +191,11 @@ class Algorithm:
 
     def add_to_end(self, elev, call, d1):
         """
-            The function
+            The function's goal is to insert the current call to be the last call which
+            the elevator fulfills.
+
+            Therefore, it checks the following:
+                1. if
 
             Parameters
             ----------
@@ -206,21 +214,19 @@ class Algorithm:
             elev.time_stamps_copy.append(call[1])
             time = call[1] + elev.get_time_for_call(d1, call[2]) \
                    + elev.get_time_for_call(call[2], call[3])
-            elev.time_stamps_copy.append(time)
-            elev.copy_calls.append(call[2])
-            elev.copy_calls.append(call[3])
         else:
             time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] + elev.get_time_for_call(d1, call[2])
             elev.time_stamps_copy.append(time)
             time = time + elev.get_time_for_call(call[2], call[3])
-            elev.time_stamps_copy.append(time)
-            elev.copy_calls.append(call[2])
-            elev.copy_calls.append(call[3])
+        elev.time_stamps_copy.append(time)
+        elev.copy_calls.append(call[2])
+        elev.copy_calls.append(call[3])
 
     def min_time_with_call(self):
         """
             The function goes over the elevators times list, and checks which elevator
-            has the minimal time with the current call. Finally, the function updates the original calls
+            has the minimal time with the current call. Finally, the function updates allocation value
+            of the call with the id of the elected elevator, and updates the original calls
             and times of the optimal elevator with the copies, including the current call,
             then resets elevators' time stamps list and calls copies for the next incoming call.
 
@@ -235,12 +241,11 @@ class Algorithm:
             if curr_time < min_time:
                 min_elev = elev
                 min_time = curr_time
+
         self.original_calls[self.call_index][5] = min_elev.id
-        # updates the original calls and times of the optimal elevator with the copies,
-        # including the current call.
         min_elev.time_stamps = deepcopy(min_elev.time_stamps_copy)
         min_elev.associated_calls = deepcopy(min_elev.copy_calls)
-        # reset of all time stamps lists and calls copies for a next call:
+
         for elev in self.elevators:
             elev.time_stamps_copy = []
             elev.copy_calls = []

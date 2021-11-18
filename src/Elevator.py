@@ -55,7 +55,8 @@ class Elevator:
     def get_time_for_call(self, src, dest):
         """
             The function calculates the amount of time for the current elevator object to reach,
-            with a call from the src floor to the dest floor.
+            with a call from the src floor to the dest floor. if the src == dest then it means
+            that the arrival time is zero, since it meaningless.
 
             Parameters
             ----------
