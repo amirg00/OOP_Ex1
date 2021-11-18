@@ -1,5 +1,11 @@
-"""Unit tests for the package."""
+# ----------------------------------------------------------------------------
+# Title:  Offline Elevator Scheduling Algorithm - Python
+# Author: Amir Gillette
+# Course: OOP
+# ----------------------------------------------------------------------------
 import unittest
+
+"""Unit tests for the package."""
 
 
 class MyTestCase(unittest.TestCase):
