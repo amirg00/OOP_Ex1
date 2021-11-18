@@ -134,10 +134,13 @@ class Algorithm:
             Here the function considers the case in which the elevator suffices
             reaching the current call, before reaching its destination.
 
-            Additionally, four sub-cases are considered:
-                1.
-                2.
-                3.
+            Additionally, three sub-cases are considered:
+                1. d1 = d2 and s1 < s2 or equivalent to that is d1 = d2 and s2 > d1,
+                    e.g: taking call[2 -> 8] and call[4,8], so we get {call[2 -> 4],call[4 -> 8]}
+                2. s1 < s2 and d1 < d2 or equivalent to that is s1 > s2 and d1 > d2,
+                    e.g: taking call[2 -> 4] and call[6 -> 8], so we get {call[2 -> 4],call[6 -> 8]}
+                3. s1 < s2 and d1 > d2 or equivalent to that is s1 > s2 and d1 < d2,
+                    e.g: taking call[2 -> 8] and call[4 -> 6], so we get {call[2 -> 4],call[6 -> 8]}
 
             Regarding to the other sub-cases, we would have to add the call to the end of elevator's lists,
             because Boaz's cmd doesn't allow to merge up call with down calls, when the elevator
@@ -203,7 +206,14 @@ class Algorithm:
             the elevator fulfills.
 
             Therefore, it checks the following:
-                1. if the call time
+                1. if the call time is bigger than the arrival time of the last call, then
+                we can add the times of the current call as usual.
+                2. otherwise, we couldn't add the times as usual, since the time stamp is
+                    much smaller than the arrival time. To overcome this, we shall
+                    check what is the time from the destination floor of the last call to
+                    the src floor of the current call, and adding it to the arrival time of
+                    the last call, this will be the new time stamp of the current call.
+                    From there, we continue as usual.
 
             Parameters
             ----------
