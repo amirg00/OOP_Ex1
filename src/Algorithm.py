@@ -50,20 +50,8 @@ class Algorithm:
                         self.merge_calls(elev, s1, d1, s2, d2, call)
                     else:
                         self.add_to_end(elev, call, d1)
-                elif t1 > t2:
-                    self.add_to_end(elev, call, d1)
-                elif t1 == t2:
-                    if Calls.check_call_state(s1, d1) != Calls.check_call_state(s2, d2):
-                        self.add_to_end(elev, call, d1)
-                    else:
-                        print(t1)
-                        print (t2)
-                        # self.equal_time_stamp(elev, s1, d1, s2, d2, call)
-                        self.add_to_end(elev, call, d1)
                 else:
                     self.add_to_end(elev, call, d1)
-            print (elev.time_stamps_copy)
-            print (elev.copy_calls)
 
     def insert_first(self, elev, call):
         elev.time_stamps_copy.append(call[1])
@@ -124,36 +112,6 @@ class Algorithm:
             elev.time_stamps_copy.append(time)
             elev.copy_calls.append(call[2])
             elev.copy_calls.append(call[3])
-
-    def equal_time_stamp(self, elev, s1, d1, s2, d2, call):
-        sorted_list = [s1]
-        bisect.insort(sorted_list, d1)
-        bisect.insort(sorted_list, s2)
-        bisect.insort(sorted_list, d2)
-        elev.copy_calls.pop(len(elev.copy_calls) - 1)
-        elev.copy_calls.pop(len(elev.copy_calls) - 2)
-        elev.time_stamps_copy.pop(len(elev.time_stamps_copy) - 1)
-
-        if len(sorted_list) == 4:
-            elev.copy_calls = elev.copy_calls + sorted_list
-            time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] \
-                   + elev.get_time_for_call(sorted_list[0], sorted_list[1])
-            elev.time_stamps_copy.append(time)
-            time = time + elev.get_time_for_call(sorted_list[1], sorted_list[2])
-            elev.time_stamps_copy.append(time)
-            time = time + elev.get_time_for_call(sorted_list[2], sorted_list[3])
-            elev.time_stamps_copy.append(time)
-        elif len(sorted_list) == 3:
-            elev.copy_calls.append(sorted_list[0])
-            elev.copy_calls.append(sorted_list[1])
-            elev.copy_calls.append(sorted_list[1])
-            elev.copy_calls.append(sorted_list[2])
-            time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] \
-                   + elev.get_time_for_call(sorted_list[0], sorted_list[1])
-            elev.time_stamps_copy.append(time)
-            elev.time_stamps_copy.append(time)
-            time = time + elev.get_time_for_call(sorted_list[1], sorted_list[2])
-            elev.time_stamps_copy.append(time)
 
     def min_time_with_call(self):
         min_elev = self.elevators[0]
