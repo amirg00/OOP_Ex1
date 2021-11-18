@@ -1,3 +1,8 @@
+# ----------------------------------------------------------------------------
+# Title:   Offline Elevator Scheduling Algorithm - Python
+# Author:  Amir Gillette
+# Course: OOP
+# ----------------------------------------------------------------------------
 import math
 
 

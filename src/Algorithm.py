@@ -1,4 +1,8 @@
-# the class has to implement the calculation for the optimal arrival time.
+# ----------------------------------------------------------------------------
+# Title:   Offline Elevator Scheduling Algorithm - Python
+# Author:  Amir Gillette
+# Course: OOP
+# ----------------------------------------------------------------------------
 from enum import Enum
 from Calls import Calls
 from copy import deepcopy
@@ -12,6 +16,7 @@ class States(Enum):
     LEVEL = 0
 
 
+# the class has to implement the calculation for the optimal arrival time.
 class Algorithm:
     def __init__(self, calls, elevators, original_calls):
         self.calls = calls

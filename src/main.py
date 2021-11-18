@@ -1,4 +1,9 @@
-"""Exercise 1 - OOP
+import argparse
+from Building import Building
+from Calls import Calls
+from Algorithm import Algorithm
+
+LONG_DESCRIPTION = r"""Exercise 1 - OOP
 
 This main manages everything including the following:
 
@@ -11,14 +16,10 @@ This main manages everything including the following:
           with the building, calls, output parser's parameters, and finally
           update the output file.
 
-This project implements the concepts are mentioned in Github repository's README.md file.
+This project implements the concepts and purposes are mentioned in Github repository's README.md file.
 
     * main - the main function of the offline scheduling algorithm.
 """
-import argparse
-from Building import Building
-from Calls import Calls
-from Algorithm import Algorithm
 
 
 def main():
