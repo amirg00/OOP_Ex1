@@ -3,6 +3,7 @@
 # Author: Amir Gillette
 # Course: OOP
 # ----------------------------------------------------------------------------
+
 import argparse
 from Building import Building
 from Calls import Calls

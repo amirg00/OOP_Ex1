@@ -15,9 +15,9 @@ class Building:
              it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
              Afterwards, this constructor calls json_reader with the initialized file name property.
 
-             Parameters
-             ----------
-             file_name : str
+            Parameters
+            ----------
+            file_name : str
                 the name of the file
             Returns
             -------

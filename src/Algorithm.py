@@ -3,10 +3,10 @@
 # Author: Amir Gillette
 # Course: OOP
 # ----------------------------------------------------------------------------
+
 from enum import Enum
 from Calls import Calls
 from copy import deepcopy
-import bisect
 
 
 # possible elevator's states:
@@ -19,18 +19,60 @@ class States(Enum):
 # the class has to implement the calculation for the optimal arrival time.
 class Algorithm:
     def __init__(self, calls, elevators, original_calls):
+        """
+            The constructor gets the calls and the original calls with the original time stamps,
+            and the elevators.
+
+            Parameters
+            ----------
+            calls : list
+                the list of the rounded up calls' time stamps
+            elevators : list
+                the list of the elevators
+            original_calls: list
+                the list of original calls
+            Returns
+            -------
+            None
+        """
         self.calls = calls
         self.elevators = elevators
         self.original_calls = original_calls
+        # an index indicates the current call.
         self.call_index = 0
 
     def algo_main(self):
+        """
+            The function goes over the calls, and allocates each to the optimal
+            elevator, considering the class' calculations. This is the reason
+            why we called it as a "main" function, because the main process is
+            conducted by this function.
+
+            Returns
+            -------
+            None
+        """
         for call in self.calls:
             self.calculate_update_time(self.elevators, call)
             self.min_time_with_call()
             self.call_index += 1
 
     def calculate_update_time(self, elevators, call):
+        """
+            The constructor gets the calls and the original calls with the original time stamps,
+            and the elevators.
+
+            Parameters
+            ----------
+            elevators : list
+                the list of the elevators
+            call :
+                the current call
+
+            Returns
+            -------
+            None
+        """
         for elev in elevators:
             elev.copy_calls = deepcopy(elev.associated_calls)
             elev.time_stamps_copy = deepcopy(elev.time_stamps)
@@ -54,6 +96,29 @@ class Algorithm:
                     self.add_to_end(elev, call, d1)
 
     def insert_first(self, elev, call):
+        """
+            The function insert the first call, when the elevator time stamps and calls lists are empty.
+
+            Therefore, the function inserts as the following:
+                    call(src,dest) with copy_calls = [] -> copy_calls = [src,dest]
+
+            and it also calculates the evaluated arrival time, by considering Boaz's simulator/cmd,
+            when all the elevators are located at first at floor 0.
+            Doing the following:
+                              t1 = call_timestamp
+                              total = t1 + time(0 -> src) + time(src -> dest)
+                              -> time_stamps_copy = [t1,total]
+
+            Parameters
+            ----------
+            elev :
+                the current elevator
+            call :
+                the current call
+            Returns
+            -------
+            None
+        """
         elev.time_stamps_copy.append(call[1])
         time = call[1] + elev.get_time_for_call(0, call[2]) + elev.get_time_for_call(call[2], call[3])
         elev.time_stamps_copy.append(time)
@@ -61,6 +126,30 @@ class Algorithm:
         elev.copy_calls.append(call[3])
 
     def merge_calls(self, elev, s1, d1, s2, d2, call):
+        """
+            Here the function considers the case in which the elevator suffices
+            reaching the current call, before reaching its destination.
+
+
+
+            Parameters
+            ----------
+            elev :
+                the current elevator
+            s1 :
+                the source of the last call of the elevator
+            d1 :
+                the destination of the last call of the elevator
+            s2 :
+                the current call's source
+            d2 :
+                the current call's destination
+            call :
+                the current call
+            Returns
+            -------
+            None
+        """
         # (2 -> 8) + (4 -> 8) = (2 -> 4) + (4 -> 8)
         d1_time_stamp = elev.time_stamps_copy.pop(len(elev.time_stamps_copy) - 1)
         elev.copy_calls.append(s2)
@@ -97,7 +186,22 @@ class Algorithm:
             self.add_to_end(elev, call, d1)
 
     def add_to_end(self, elev, call, d1):
+        """
+            The function
 
+            Parameters
+            ----------
+            elev :
+                the current elevator
+            call :
+                the current call
+            d1: int
+                the destination of the last call inside the elevator's list
+
+            Returns
+            -------
+            None
+        """
         if call[1] > elev.time_stamps_copy[len(elev.time_stamps_copy) - 1]:
             elev.time_stamps_copy.append(call[1])
             time = call[1] + elev.get_time_for_call(d1, call[2]) \
@@ -114,26 +218,29 @@ class Algorithm:
             elev.copy_calls.append(call[3])
 
     def min_time_with_call(self):
+        """
+            The function goes over the elevators times list, and checks which elevator
+            has the minimal time with the current call. Finally, the function updates the original calls
+            and times of the optimal elevator with the copies, including the current call,
+            then resets elevators' time stamps list and calls copies for the next incoming call.
+
+            Returns
+            -------
+            None
+        """
         min_elev = self.elevators[0]
         min_time = self.elevators[0].time_stamps_copy[len(self.elevators[0].time_stamps_copy) - 1]
-        init_time = self.elevators[0].time_stamps_copy[len(self.elevators[0].time_stamps_copy) - 2]
-        diff_first = min_time - init_time
-
         for elev in self.elevators:
-
             curr_time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1]
-            first_time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 2]
-            diff = curr_time - first_time
-
             if curr_time < min_time:
                 min_elev = elev
                 min_time = curr_time
-                diff_first = diff
         self.original_calls[self.call_index][5] = min_elev.id
+        # updates the original calls and times of the optimal elevator with the copies,
+        # including the current call.
         min_elev.time_stamps = deepcopy(min_elev.time_stamps_copy)
         min_elev.associated_calls = deepcopy(min_elev.copy_calls)
-
-        # reset of all time stamps lists and calls copies for next call:
+        # reset of all time stamps lists and calls copies for a next call:
         for elev in self.elevators:
             elev.time_stamps_copy = []
             elev.copy_calls = []

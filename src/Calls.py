@@ -16,6 +16,8 @@ class Calls:
             it gets. In addition, the function is also responsible to read the csv file, case cast
             the call values from string to their actual value, and make a copy of the calls with up
             rounded time stamps.
+
+            Parameters
             ----------
             file_name: str
                 the name of the csv file to read from
@@ -31,7 +33,7 @@ class Calls:
 
     def csv_reader(self, file_name):
         """
-            the function gets the file name, and reads row by row, the file via the csv reader,
+            The function gets the file name, and reads row by row, the file via the csv reader,
             after reading each row, the function appends each row to the calls list,
             because each row is a call in the csv file.
 
@@ -70,10 +72,8 @@ class Calls:
     # The method rounds each timestamp for each call over the copy list of the calls.
     def round_call_timestamps(self):
         """
-            the function goes over all the calls in the copy and rounds up each calls' timestamp.
+            The function goes over all the calls in the copy and rounds up each calls' timestamp.
 
-            Parameters
-            ----------
             Returns
             -------
             None
@@ -84,7 +84,7 @@ class Calls:
     @staticmethod
     def check_call_state(src, dest):
         """
-            the function checks the call's state, then returns:
+            The function checks the call's state, then returns:
                 1) 1 = UP if the src is smaller than the dest because it is an UP call.
                 2) -1 = Down if the src is bigger than the destination, because it's a DOWN call.
 
@@ -102,7 +102,7 @@ class Calls:
 
     def allocated_calls(self, calls):
         """
-            the function copies the allocated calls to the calls list.
+            The function copies the allocated calls to the calls list.
 
             Parameters
             ----------
@@ -124,8 +124,6 @@ class Calls:
 
             each one of these is casted from string to his real value type by the function.
 
-            Parameters
-            ----------
             Returns
             -------
             None
