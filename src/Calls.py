@@ -3,6 +3,7 @@
 # Author: Amir Gillette
 # Course: OOP
 # ----------------------------------------------------------------------------
+
 import csv
 from copy import deepcopy
 import math
@@ -11,17 +12,17 @@ import math
 class Calls:
     def __init__(self, file_name):
         """
-                    The constructor initialize the file name property with the json file name, represent the building,
-                    it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
-                    Afterwards, this constructor calls json_reader with the initialized file name property.
-                    Parameters
-                    ----------
-
-
-                    Returns
-                    -------
-                    None
-                """
+            The constructor initialize the file name property with the csv file name, represent the calls,
+            it gets. In addition, the function is also responsible to read the csv file, case cast
+            the call values from string to their actual value, and make a copy of the calls with up
+            rounded time stamps.
+            ----------
+            file_name: str
+                the name of the csv file to read from
+            Returns
+            -------
+            None
+        """
         self.calls = []
         self.csv_reader(file_name)
         self.cast_calls_values()
@@ -30,17 +31,17 @@ class Calls:
 
     def csv_reader(self, file_name):
         """
-                    The constructor initialize the file name property with the json file name, represent the building,
-                    it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
-                    Afterwards, this constructor calls json_reader with the initialized file name property.
-                    Parameters
-                    ----------
-
-
-                    Returns
-                    -------
-                    None
-                """
+            the function gets the file name, and reads row by row, the file via the csv reader,
+            after reading each row, the function appends each row to the calls list,
+            because each row is a call in the csv file.
+            Parameters
+            ----------
+            file_name: str
+                the name of the csv file to read from
+            Returns
+            -------
+            None
+        """
         calls = []
         with open(file_name) as f:
             csv_reader = csv.reader(f)
@@ -50,17 +51,16 @@ class Calls:
 
     def update_output(self, csv_file):
         """
-                    The constructor initialize the file name property with the json file name, represent the building,
-                    it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
-                    Afterwards, this constructor calls json_reader with the initialized file name property.
-                    Parameters
-                    ----------
-
-
-                    Returns
-                    -------
-                    None
-                """
+            By the given name of the csv file, the function updates all call
+            to the given csv output file, with the csv writer.
+            Parameters
+            ----------
+            csv_file: str
+                the name of the csv file to update the calls on it
+            Returns
+            -------
+            None
+        """
         with open(csv_file, "w") as f:
             csv_writer = csv.writer(f)
             csv_writer.writerows(self.calls)
@@ -68,17 +68,13 @@ class Calls:
     # The method rounds each timestamp for each call over the copy list of the calls.
     def round_call_timestamps(self):
         """
-                    The constructor initialize the file name property with the json file name, represent the building,
-                    it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
-                    Afterwards, this constructor calls json_reader with the initialized file name property.
-                    Parameters
-                    ----------
-
-
-                    Returns
-                    -------
-                    None
-                """
+            the function goes over all the calls in the copy and rounds up each calls' timestamp.
+            Parameters
+            ----------
+            Returns
+            -------
+            None
+        """
         for element in self.copy_of_round_calls:
             element[1] = int(math.ceil(float(element[1])))
 
@@ -102,17 +98,15 @@ class Calls:
 
     def allocated_calls(self, calls):
         """
-                    The constructor initialize the file name property with the json file name, represent the building,
-                    it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
-                    Afterwards, this constructor calls json_reader with the initialized file name property.
-                    Parameters
-                    ----------
-
-
-                    Returns
-                    -------
-                    None
-                """
+            the function copies the allocated calls to the calls list.
+            Parameters
+            ----------
+            calls: list
+                the list contains the calls
+            Returns
+            -------
+            None
+        """
         self.calls = deepcopy(calls)
 
     def cast_calls_values(self):
