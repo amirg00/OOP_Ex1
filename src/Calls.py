@@ -41,9 +41,6 @@ class Calls:
     def allocated_calls(self, calls):
         self.calls = deepcopy(calls)
 
-    def print_round_calls(self):
-        print(self.copy_of_round_calls)
-
     def cast_calls_values(self):
         for call in self.calls:
             call[1] = float(call[1])

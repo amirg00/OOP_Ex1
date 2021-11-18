@@ -74,9 +74,6 @@ class Algorithm:
 
     def merge_calls(self, elev, s1, d1, s2, d2, call):
         # (2 -> 8) + (4 -> 8) = (2 -> 4) + (4 -> 8)
-        print ("dddsddddd")
-        print (elev.copy_calls)
-        print ("sssssssss")
         d1_time_stamp = elev.time_stamps_copy.pop(len(elev.time_stamps_copy) - 1)
         elev.copy_calls.append(s2)
         time = elev.time_stamps_copy[len(elev.time_stamps_copy) - 1] + elev.get_time_for_call(s1, s2)
@@ -182,6 +179,3 @@ class Algorithm:
         for elev in self.elevators:
             elev.time_stamps_copy = []
             elev.copy_calls = []
-
-    def print_calls(self):
-        print(self.original_calls)
