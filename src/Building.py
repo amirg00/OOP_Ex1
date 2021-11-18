@@ -14,6 +14,7 @@ class Building:
              The constructor initialize the file name property with the json file name, represent the building,
              it gets. In addition, it also gets a couple properties: minFloor, maxFloor and elevator.
              Afterwards, this constructor calls json_reader with the initialized file name property.
+
              Parameters
              ----------
              file_name : str
@@ -35,6 +36,7 @@ class Building:
         """
             The function gets the name of the json file, save the dictionary of the json file.
             Then, the function goes over the dictionary and update the properties of the class.
+
             Parameters
             ----------
             file_name : str

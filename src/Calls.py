@@ -34,6 +34,7 @@ class Calls:
             the function gets the file name, and reads row by row, the file via the csv reader,
             after reading each row, the function appends each row to the calls list,
             because each row is a call in the csv file.
+
             Parameters
             ----------
             file_name: str
@@ -53,6 +54,7 @@ class Calls:
         """
             By the given name of the csv file, the function updates all call
             to the given csv output file, with the csv writer.
+
             Parameters
             ----------
             csv_file: str
@@ -69,6 +71,7 @@ class Calls:
     def round_call_timestamps(self):
         """
             the function goes over all the calls in the copy and rounds up each calls' timestamp.
+
             Parameters
             ----------
             Returns
@@ -84,6 +87,7 @@ class Calls:
             the function checks the call's state, then returns:
                 1) 1 = UP if the src is smaller than the dest because it is an UP call.
                 2) -1 = Down if the src is bigger than the destination, because it's a DOWN call.
+
             Parameters
             ----------
             src : int
@@ -99,6 +103,7 @@ class Calls:
     def allocated_calls(self, calls):
         """
             the function copies the allocated calls to the calls list.
+
             Parameters
             ----------
             calls: list
@@ -118,6 +123,7 @@ class Calls:
                 4. call[5] = the allocated elevator id (an integer number)
 
             each one of these is casted from string to his real value type by the function.
+
             Parameters
             ----------
             Returns
