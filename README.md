@@ -14,6 +14,63 @@
 <!-- Algorithm  -->
 
 ## Algorithm
+The algorithm follows Boaz's cmd/simulator conduction. Hence, the first explanation
+would focus about how Boaz's cmd/simulator conducts in short. The goal, of course, 
+is to have the ability to mimic Boaz's cmd conduction, and thus we could potentially
+"foresee" where each elevator is located after a certain call. 
+### Boaz's cmd
+According to Boaz's cmd, each elevator satisfies one main rule, and it's to 
+continue to make the calls with the same direction as the first call, 
+without even thinking about new income calls with a diverse direction. When
+the income calls with same direction have successfully fulfilled, only
+then the elevator can answer a call with a different direction. 
+
+In addition, the cmd is rendering each df time, when in our case
+df is 1, meaning that the cmd is rendering each second. However, 
+since the calls' time stamps are real number and not integer, then
+the cmd would see the incoming call just on the next integer closed
+to the time stamp. For example, if we have an incoming call with
+time stamp that is "0.785" so the cmd can see it just in time = 1 sec.
+This is also true for the arrival time calculations, when we get
+a float result, and the cmd would actually tell us that the incoming call
+has successfully fulfilled just on the next integer closed to the rounded
+call's time stamp adding the calculation also rounded up to it. 
+
+
+### How then can we extract from that an optimal algorithm?
+We can actually always look up for the latest allocated call for a certain 
+elevator, following the restriction of Boaz's cmd and rounded calls' time stamps and arrival time.
+This looks like a dynamic programming problem, but we aren't
+going to build a table and a recursion formula for it, as we need
+to follow Boaz's cmd. Therefore, if we're handling each call to
+have the optimal elevator, then at the end, when we went over all call with all the elevators,  we would get the optimal 
+solution. 
+
+### How does it work? 
+We want each elevator to have the structures to save all calls
+that are allocated to this specified elevator, and to save a copy
+of the calls that are allocated to the elevator, so we can
+run our test to find in which elevator we get an optimal allocation. 
+
+
+Because it's hard to just have one call structure to hold each call, 
+since it is inconvenient to approach the time stamps and add to each
+call an arrival time calculation, and in general approaching each
+call's property. The best solution, at least that I could find, is
+to separate the calls towards two lists. One list contains each time stamp
+and also the calculation for the evaluated arrival time for each call, which
+is the time that the call is done as if we had put it in Boaz's simulator/cmd.
+The second list has a call's source and destination, such that we can
+simulate what would have happened in Boaz's simulator if we
+allocate a certain call to a certain elevator. 
+
+In addition, we want simultaneously to update each elevator's lists for each incoming call,
+so we could keep a track of which times belong to which source and destination. But, there
+are some obstacles in that way. We do know that we should check if a call
+can be answered by an elevator that on the way to complete a call, and we want
+to check how to calculate the new timestamps and arrival time if needed, those points are well detailed 
+in the project documentations. 
+
 
 
 <!-- UML Diagram  -->
@@ -23,6 +80,8 @@
 
 
 ## Results
+
+Here is the results we got, for the compatible building to the calls.
 
 |   Building  | Case | Total Waiting Time | Average Waiting Time Per Call | UnCompleted Calls    | Certificate |
 |:--------:|:--------:|:--------:|:--------:| :--------:|:--------:|
@@ -46,6 +105,13 @@
 
 <!-- Links  -->
 ## Links
+Well, I took inspiration from the following article: 
+* [On-line Algorithms versus Off-line Algorithms for the Elevator](https://studylib.net/doc/7878746/on-line-algorithms-versus-off-line-algorithms-for-the-ele...)
+
+There is a link for the README of the previous assignment:
+* [Ex0_Readme](https://docs.google.com/document/d/1mpZujTy5iBqluBIg-lFaehn_-DZAAC5blGZ5gd_aUQ0/edit)
+
+* Note: this readme is written in HEBREW. 
 
 
 <!-- Languages and Tools -->
