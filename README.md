@@ -1,13 +1,25 @@
 ## Offline Elevator Scheduling Algorithm: Python 
 **Amir Gillette, Ariel University, November 2021.**  
 
--- consider using GitUI for the bonus--
+
 
 ## <a name="table-of-contents"></a> Table of Contents
 
 1. [Algorithm](#Algorithm)
-2. [Results](#Results)
-3. [Links](#Links)
+2. [UML Diagram](#UML Diagram)
+3. [Results](#Results)
+4. [Links](#Links)
+5. [Languages and Tools](#Languages and Tools)
+
+<!-- Algorithm  -->
+
+## Algorithm
+
+
+<!-- UML Diagram  -->
+
+## UML Diagram 
+
 
 ## Results
 
@@ -31,12 +43,9 @@
 
 
 
-<!-- UML DIAGRAM  -->
-
-## UML DIAGRAM 
 
 <!-- Links  -->
-##Links
+## Links
 
 
 <!-- Languages and Tools -->
