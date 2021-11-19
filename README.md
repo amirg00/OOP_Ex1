@@ -29,15 +29,13 @@
 |  B5|  Calls_c   |    31956.0  |  31.956   |0 | -169319244 |
 |  B5|  Calls_d   |  31645.0    |  31.645   | 0| -169319244 |
 
-TODO: ADD "INCOMPATIBLE CALL TO THE BUILDING"
-      DO IT USING A LINK TO THE SPECIFIED PROBLEM WITH THE COMMENT
-Due to the limited gpus, it's really a chanllenge for us to pretrain with larger model or longer schedule mentioned in the paper. 
-
-So if one can fininsh it, please feel free report it in the issue or push a PR, thank you!
-
-And your star is my motivation, thank u~
 
 
+<!-- UML DIAGRAM  -->
+
+## UML DIAGRAM 
+
+<!-- Links  -->
 ##Links
 
 
