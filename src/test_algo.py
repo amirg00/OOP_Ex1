@@ -118,5 +118,6 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(e2.copy_calls, copy_calls)
         self.assertEqual(e2.time_stamps_copy, copy_time_stamp)
 
+
 if __name__ == '__main__':
     unittest.main()
