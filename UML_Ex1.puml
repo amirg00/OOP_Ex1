@@ -1,13 +1,73 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+
+!$BGCOLOR="black"
+
+!include https://raw.githubusercontent.com/bschwarz/puml-themes/master/themes/black-knight/puml-theme-black-knight.puml
 
 
-Algorithm --> Algorithm
-
+Algorithm --* Calls
+Algorithm --* Building
 class Algorithm{
--fdffd
-+fdfdf
-+dfdfd()
++calls : list
++elevators : list
++original_calls : list
++call_index : int
++algo_main()
++calculate_update_time(elevators, call)
++insert_first(elev, call)
++merge_calls(elev, s1, d1, s2, d2, call)
++add_to_end(elev, call, d1)
++min_time_with_call()
+
+}
+Building --* Elevator
+
+class Building{
++file_name : str
++minFloor : int
++maxFloor : int
++elevators : list
++json_reader(file_name)
+}
+
+class Calls{
++calls : list
++copy_of_round_calls : list
++csv_reader(file_name)
++update_output(csv_file)
++round_call_timestamps()
++check_call_state(src,dest)
++allocated_calls(calls)
++cast_calls_values()
+
+}
+
+class Elevator{
++id : int
++speed : float
++min_floor : int
++max_floor : int
++close_time : float
++open_time : float
++start_time : float
++stop_time : float
++associated_calls : list
++copy_calls : list
++time_stamps : list
++time_stamps_copy : list
++get_time_for_call(src,dest)
+}
+
+main --* Algorithm
+
+class main{
+  +main()
+}
+Ex1 --* main
+class Ex1{
+}
+
+class test_algo{
 }
 
 
