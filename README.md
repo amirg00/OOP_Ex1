@@ -6,10 +6,10 @@
 ## <a name="table-of-contents"></a> Table of Contents
 
 1. [Algorithm](#Algorithm)
-2. [UML Diagram](#UML Diagram)
+2. [UML Diagram](#UML-Diagram)
 3. [Results](#Results)
 4. [Links](#Links)
-5. [Languages and Tools](#Languages and Tools)
+5. [Languages and Tools](#Languages-and-Tools)
 
 <!-- Algorithm  -->
 
@@ -124,10 +124,3 @@ There is a link for the README of the previous assignment:
  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png"></code>
   </div>
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [Python](https://www.python.org/)
-* [Git](https://git-scm.com/)
-* [Git-scm](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
