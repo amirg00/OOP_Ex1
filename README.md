@@ -111,7 +111,7 @@ Well, I took inspiration from the following article:
 There is a link for the README of the previous assignment:
 * [Ex0_Readme](https://docs.google.com/document/d/e/2PACX-1vTa4FY-jtAqmisn74zJPTpWpR7uoDnlyaIwSZP6Mo12_0r8Zw6RYcgnnWwqxC1TV26U3lWSl-pZjTWU/pub)
 
-* Note: this readme is written in HEBREW. 
+* Note: this readme is written in Hebrew. 
 
 
 <!-- Languages and Tools -->
