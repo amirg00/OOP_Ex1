@@ -2,7 +2,7 @@
 
 !$BGCOLOR="black"
 
-!include https://raw.githubusercontent.com/bschwarz/puml-themes/master/themes/black-knight/puml-theme-black-knight.puml
+!include https://raw.githubusercontent.com/bschwarz/puml-themes/master/themes/lightgray/puml-theme-lightgray.puml
 
 
 Algorithm --* Calls
