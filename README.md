@@ -109,7 +109,7 @@ Well, I took inspiration from the following article:
 * [On-line Algorithms versus Off-line Algorithms for the Elevator](https://studylib.net/doc/7878746/on-line-algorithms-versus-off-line-algorithms-for-the-ele...)
 
 There is a link for the README of the previous assignment:
-* [Ex0_Readme](https://docs.google.com/document/d/1mpZujTy5iBqluBIg-lFaehn_-DZAAC5blGZ5gd_aUQ0/edit)
+* [Ex0_Readme](https://docs.google.com/document/d/e/2PACX-1vTa4FY-jtAqmisn74zJPTpWpR7uoDnlyaIwSZP6Mo12_0r8Zw6RYcgnnWwqxC1TV26U3lWSl-pZjTWU/pub)
 
 * Note: this readme is written in HEBREW. 
 
@@ -123,4 +123,6 @@ There is a link for the README of the previous assignment:
  <code><img height="40"  src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"></code> 
  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/git/git.png"></code>
  <code><img height="40" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/terminal/terminal.png"></code>
-  </div>
+ <code><img height="40" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/PyCharm_Icon.svg"></code>
+ </div>
+
